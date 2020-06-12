@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" name="Failed suite [Suite]" parallel="methods">
+  <test name="Akkadu application Smoke test(failed)" parallel="methods">
+    <classes>
+      <class name="com.akkadu.qa.uitests.SmokeTest">
+        <methods>
+          <include name="driversetup"/>
+          <include name="verifyToStreamingOnBroadcast"/>
+          <include name="tearDownSuite"/>
+          <include name="afterMainMethod"/>
+          <include name="before"/>
+          <include name="initializePages"/>
+        </methods>
+      </class> <!-- com.akkadu.qa.uitests.SmokeTest -->
+    </classes>
+  </test> <!-- Akkadu application Smoke test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
