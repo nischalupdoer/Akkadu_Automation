@@ -87,6 +87,10 @@ public class BaseTest
 			{
 		//		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"/chromedriver");
 			}
+			else if()
+			{
+				driver = webdriver.Chrome(executable_path=System.getProperty("user.dir") + "/" + "resources" + "/" + "chromedriver.exe");
+			}
 			else
 			{
 			Log.info("Getting Chromedriver exe from resources");
