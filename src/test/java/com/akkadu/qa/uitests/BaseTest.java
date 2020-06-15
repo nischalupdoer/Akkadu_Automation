@@ -87,7 +87,7 @@ public class BaseTest
 			{
 		//		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"/chromedriver");
 			}
-			else if()
+			else if(os.contains("linux"))
 			{
 				driver = webdriver.Chrome(executable_path=System.getProperty("user.dir") + "/" + "resources" + "/" + "chromedriver.exe");
 			}
