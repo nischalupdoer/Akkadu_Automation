@@ -89,7 +89,7 @@ public class BaseTest
 			}
 			else if(os.contains("linux"))
 			{
-				driver = webdriver.Chrome(executable_path=System.getProperty("user.dir") + "/" + "resources" + "/" + "chromedriver.exe");
+				
 			}
 			else
 			{
