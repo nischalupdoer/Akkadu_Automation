@@ -87,6 +87,10 @@ public class BaseTest
 			{
 		//		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"/chromedriver");
 			}
+			else if(os.contains("linux"))
+			{
+				System.out.println("Nothing to do here");
+			}
 			else
 			{
 			Log.info("Getting Chromedriver exe from resources");
