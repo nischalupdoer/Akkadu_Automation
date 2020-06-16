@@ -5,7 +5,6 @@ requires:
 - test_windows
 - image: selenium/standalone-chrome:3.1.0  
 workflows:
-  maven_test:
     jobs:
     build:
     docker:
@@ -25,5 +24,7 @@ workflows:
       - image: circleci/node:6-browsers
         environment:
           CHROME_BIN: "/usr/bin/google-chrome"
+    maven_test:
+    jobs:
       - maven/test # checkout, build, test, and upload test results
     
