@@ -8,10 +8,8 @@ requires:
 workflows:
   maven_test:
     jobs:
-      - maven/test # checkout, build, test, and upload test results
-test:
-    docker:
-      - image: 'cimg/node:13.12'
     steps:
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
+      - maven/test # checkout, build, test, and upload test results
+    
