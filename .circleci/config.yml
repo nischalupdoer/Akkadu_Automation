@@ -38,19 +38,7 @@ commands:
         description: |
           If there is an existing installation of Google Chrome, replace it with the latest stable release?
         type: boolean
-        install_chrome:
-    description: |
-      Install Google's Chrome browser and ChromeDriver
-    usage:
-      jobs:
-        test:
-          docker:
-          - image: cimg/node:13.12
-          steps:
-          - browser-tools/install-chrome
-          - browser-tools/install-chromedriver
-      orbs:
-        browser-tools: circleci/browser-tools@x.y
+        
 version: 2.1
 orbs:
   maven: circleci/maven@0.0.12
