@@ -1,9 +1,7 @@
 version: 2.1
 orbs:
  maven: circleci/maven@0.0.12
-requires:
- - test_windows
- - image: selenium/standalone-chrome:3.1.0  
+
 workflows:
  maven_test:
  jobs:
