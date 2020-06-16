@@ -1,4 +1,7 @@
-commands:
+version: 2.1
+orbs:
+  maven: circleci/maven@0.0.12
+  commands:
   install-browser-tools:
     description: |
       Install various browsers and browser-testing tools into any Debian/Ubuntu-based Docker image. Intended to ease browser testing on CircleCI. Requirements: bash, curl, apt-get, gpg, sha256sum, sed, tar, unzip, grep
@@ -38,10 +41,6 @@ commands:
         description: |
           If there is an existing installation of Google Chrome, replace it with the latest stable release?
         type: boolean
-        
-version: 2.1
-orbs:
-  maven: circleci/maven@0.0.12
 requires:
 - test_windows
 - image: selenium/standalone-chrome:3.1.0  
