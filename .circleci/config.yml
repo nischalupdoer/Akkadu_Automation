@@ -1,10 +1,15 @@
+jobs:
+  test:
+    docker:
+      - image: 'cimg/node:13.12'
+    steps:
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+orbs:
+  browser-tools: circleci/browser-tools@x.y
 version: 2.1
 orbs:
   maven: circleci/maven@0.0.12
-  browser-tools: circleci/browser-tools@x.y
-  steps:
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
 requires:
 - test_windows
 - image: selenium/standalone-chrome:3.1.0  
