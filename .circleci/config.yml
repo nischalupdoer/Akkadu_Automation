@@ -1,3 +1,56 @@
+commands:
+  install-browser-tools:
+    description: |
+      Install various browsers and browser-testing tools into any Debian/Ubuntu-based Docker image. Intended to ease browser testing on CircleCI. Requirements: bash, curl, apt-get, gpg, sha256sum, sed, tar, unzip, grep
+    parameters:
+      chromedriver-install-dir:
+        default: /usr/local/bin
+        description: |
+          Directory in which to install Chromedriver
+        type: string
+        install-chrome:
+        default: true
+        description: |
+          Install Google Chrome? Note: only the latest stable release can be installed, as Google does not maintain a public archive of previous releases.
+        type: boolean
+      install-chromedriver:
+        default: true
+        description: |
+          Install Chromedriver? Note: requires Google Chrome. A Chromedriver version will be dynamically selected based on the installed version of Chrome; for details, see the following information: https://sites.google.com/a/chromium.org/chromedriver/downloads/version-selection
+        type: boolean
+        steps:
+        - when:
+        condition: <<parameters.install-chrome>>
+        steps:
+        - install-chrome:
+            replace-existing: <<parameters.replace-existing-chrome>>
+    - when:
+        condition: <<parameters.install-chromedriver>>
+        steps:
+        - install-chromedriver:
+            install-dir: <<parameters.chromedriver-install-dir>>
+  install-chrome:
+    description: |
+      Install Google's Chrome browser, for use in browser testing. Note: only the latest stable release can be installed, as Google does not maintain a public archive of previous releases. Supports Debian/Ubuntu Linux, Alpine Linux (via Chromium), and macOS environments.
+    parameters:
+      replace-existing:
+        default: false
+        description: |
+          If there is an existing installation of Google Chrome, replace it with the latest stable release?
+        type: boolean
+        install_chrome:
+    description: |
+      Install Google's Chrome browser and ChromeDriver
+    usage:
+      jobs:
+        test:
+          docker:
+          - image: cimg/node:13.12
+          steps:
+          - browser-tools/install-chrome
+          - browser-tools/install-chromedriver
+      orbs:
+        browser-tools: circleci/browser-tools@x.y
 version: 2.1
 orbs:
   maven: circleci/maven@0.0.12
