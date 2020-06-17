@@ -74,13 +74,20 @@ public class BaseTest
 			// set browser preferences to ignore browser notification pop up and to add
 			// console errors
 			
-			WebDriverManager.chromedriver().setup();
+		//	WebDriverManager.chromedriver().setup();
+			WebDriverManager.chromedriver().version("77.0.3865.40").setup();
 			Map<String, Object> prefs = new HashMap<>();
 			prefs.put("profile.default_content_setting_values.notifications", 2);
 			prefs.put("download.default_directory", downloadFolder);
 			ChromeOptions options = new ChromeOptions();
 			options.setExperimentalOption("prefs", prefs);
-
+			options.addArguments("start-maximized"); 
+			options.addArguments("enable-automation"); 
+			options.addArguments("--no-sandbox"); 
+			options.addArguments("--disable-infobars");
+			options.addArguments("--disable-dev-shm-usage");
+			options.addArguments("--disable-browser-side-navigation"); 
+			options.addArguments("--disable-gpu");
 			String os = System.getProperty("os.name").toLowerCase();
 			System.out.println("the Current OS is :"+os);
 			if(os.contains("mac"))
@@ -90,7 +97,7 @@ public class BaseTest
 			}
 			else if(os.contains("linux"))
 			{
-				System.setProperty("webdriver.chrome.driver","/usr/bin/google-chrome");
+		//		System.setProperty("webdriver.chrome.driver","/usr/bin/google-chrome");
 			}	
 			else
 			{
