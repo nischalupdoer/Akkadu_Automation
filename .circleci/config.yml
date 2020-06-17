@@ -32,10 +32,13 @@ jobs:
   #     - run: mvn **/*Test*.java
 
   build:
+    working_directory: ~/project
     docker:
       - image: selenium/standalone-chrome:3.1.0 
     steps:
       - run: echo "Selenium chromedriver installed"
+      - attach_workspace:
+          at: ~/project
       - persist_to_workspace:
           root: /usr/bin
           paths:
@@ -55,6 +58,9 @@ workflows:
       # - test
       - build
       - maven/test: # checkout, build, test, and upload test results
+          steps:
+            - attach_workspace:
+              at: ~/project
           test_results_path: test-reports
           requires:
             - build
