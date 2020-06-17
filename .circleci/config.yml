@@ -27,7 +27,7 @@ workflows:
   maven_test:
     jobs:
       - provision_chromedriver
-      - maven/test # checkout, build, test, and upload test results
+      - maven/test: # checkout, build, test, and upload test results
           requires:
             - provision_chromedriver
     
