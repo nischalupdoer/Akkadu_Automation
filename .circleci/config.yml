@@ -7,7 +7,7 @@ jobs:
     docker:
       - image: selenium/standalone-chrome:3.1.0 
     steps:
-      - run: echo "selenium chromedriver installed"
+      - run: /opt/bin/entry_point.sh
 
 # requires:
 #   - test_windows
