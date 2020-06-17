@@ -7,7 +7,10 @@ jobs:
     docker:
       - image: selenium/standalone-chrome:3.1.0 
     steps:
-      - run: /opt/bin/entry_point.sh
+      - run: 
+          name: Start Selenium
+          command: /opt/bin/entry_point.sh
+          background: true
 
 # requires:
 #   - test_windows
