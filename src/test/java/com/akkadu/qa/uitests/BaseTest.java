@@ -97,7 +97,7 @@ public class BaseTest
 			}
 			else if(os.contains("linux"))
 			{
-		//		System.setProperty("webdriver.chrome.driver","/usr/bin/google-chrome");
+				System.setProperty("webdriver.chrome.driver","/home/circleci/.m2/repository/webdriver/chromedriver/linux64/77.0.3865.40/chromedriver");
 			}	
 			else
 			{
