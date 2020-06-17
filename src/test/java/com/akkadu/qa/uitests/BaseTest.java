@@ -88,6 +88,10 @@ public class BaseTest
 				System.out.println("Nothing to do here");
 		//		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"/chromedriver");
 			}
+			else if(os.contains("linux"))
+			{
+				System.setProperty("webdriver.chrome.driver","/usr/bin/google-chrome");
+			}	
 			else
 			{
 			Log.info("Getting Chromedriver exe from resources");
