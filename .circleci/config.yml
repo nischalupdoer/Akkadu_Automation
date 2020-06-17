@@ -32,18 +32,18 @@ jobs:
   #     - run: mvn **/*Test*.java
 
   build:
-    working_directory: ~/project
     docker:
       - image: selenium/standalone-chrome:3.1.0 
     steps:
       - run: echo "Selenium chromedriver installed"
-      - run: ls /usr/bin
-      - run: 
-          name: Start Selenium
-          command: /opt/bin/entry_point.sh
-          background: true
-      - run: ls /usr/bin
-      - run: test /usr/bin/chromedriver
+      - persist_to_workspace:
+          root: /usr/bin
+          paths:
+            - chromedriver
+      # - run: 
+      #     name: Start Selenium
+      #     command: /opt/bin/entry_point.sh
+      #     background: true
 
 # requires:
 #   - test_windows
