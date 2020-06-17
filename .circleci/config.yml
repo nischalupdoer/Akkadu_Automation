@@ -4,13 +4,20 @@ orbs:
 
 jobs:
   provision_chromedriver:
+    working_directory: ~/project
     docker:
       - image: selenium/standalone-chrome:3.1.0 
     steps:
+      - run: echo "Selenium chromedriver installed"
       - run: 
           name: Start Selenium
           command: /opt/bin/entry_point.sh
           background: true
+# executors:
+#   selenium_chrome:
+#     working_directory: ~/project
+#     docker:
+#       - image: selenium/standalone-chrome:3.1.0 
 
 # requires:
 #   - test_windows
@@ -19,8 +26,9 @@ jobs:
 workflows:
   maven_test:
     jobs:
-      - provision_chromedriver
-      - maven/test: # checkout, build, test, and upload test results
-          requires:
-            - provision_chromedriver
+      # - provision_chromedriver
+      - maven/test # checkout, build, test, and upload test results
+          # executor: selenium_chrome
+          # requires:
+          #   - provision_chromedriver
     
