@@ -58,9 +58,9 @@ workflows:
       # - test
       - build
       - maven/test: # checkout, build, test, and upload test results
-          steps:
-            - attach_workspace:
-              at: ~/project
+          # steps:
+          #   - attach_workspace:
+          #     at: ~/project
           test_results_path: test-reports
           requires:
             - build
