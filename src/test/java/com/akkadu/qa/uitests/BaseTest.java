@@ -74,8 +74,8 @@ public class BaseTest
 			// set browser preferences to ignore browser notification pop up and to add
 			// console errors
 			
-		//	WebDriverManager.chromedriver().setup();
-			WebDriverManager.chromedriver().version("77.0.3865.40").setup();
+			WebDriverManager.chromedriver().setup();
+		//	WebDriverManager.chromedriver().version("77.0.3865.40").setup();
 			Map<String, Object> prefs = new HashMap<>();
 			prefs.put("profile.default_content_setting_values.notifications", 2);
 			prefs.put("download.default_directory", downloadFolder);
@@ -97,7 +97,7 @@ public class BaseTest
 			}
 			else if(os.contains("linux"))
 			{
-				System.setProperty("webdriver.chrome.driver","/home/circleci/.m2/repository/webdriver/chromedriver/linux64/77.0.3865.40/chromedriver");
+				System.setProperty("webdriver.chrome.driver","/home/circleci/project/resources/chromedriver.exe");
 			}	
 			else
 			{
