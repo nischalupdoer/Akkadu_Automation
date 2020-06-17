@@ -10,16 +10,16 @@ orbs:
 #       - image: selenium/standalone-chrome:3.1.0 
 
 jobs:
-  build:
-    docker:
-      - image: circleci/node:jessie-browsers
-    steps:
-      - checkout
-      - run: mkdir test-reports
-      - run:
-          name: Download Selenium
-          command: sudo apt-get install chromium-chromedriver
-      - run: ls /usr/bin
+  # build:
+  #   docker:
+  #     - image: circleci/node:jessie-browsers
+  #   steps:
+  #     - checkout
+  #     - run: mkdir test-reports
+  #     - run:
+  #         name: Download Selenium
+  #         command: sudo apt-get install chromium-chromedriver
+  #     - run: ls /usr/bin
       # - run:
       #     name: Start Selenium
       #     command: java -log test-reports/selenium.log
@@ -31,16 +31,19 @@ jobs:
   #         at: ~/project
   #     - run: mvn **/*Test*.java
 
-  # provision_chromedriver:
-  #   working_directory: ~/project
-  #   docker:
-  #     - image: selenium/standalone-chrome:3.1.0 
-  #   steps:
-  #     - run: echo "Selenium chromedriver installed"
-  #     - run: 
-  #         name: Start Selenium
-  #         command: /opt/bin/entry_point.sh
-  #         background: true
+  provision_chromedriver:
+    working_directory: ~/project
+    docker:
+      - image: selenium/standalone-chrome:3.1.0 
+    steps:
+      - run: echo "Selenium chromedriver installed"
+      - run: ls /usr/bin
+      - run: 
+          name: Start Selenium
+          command: /opt/bin/entry_point.sh
+          background: true
+      - run: ls /usr/bin
+      - run: test /usr/bin/chromedriver
 
 # requires:
 #   - test_windows
