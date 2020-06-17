@@ -90,7 +90,7 @@ public class BaseTest
 			}
 			else if(os.contains("linux"))
 			{
-				System.setProperty("webdriver.chrome.driver","/usr/bin/google-chrome");
+				System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver"); // google-chrome
 			}	
 			else
 			{
