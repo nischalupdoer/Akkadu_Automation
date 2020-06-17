@@ -85,11 +85,8 @@ public class BaseTest
 			System.out.println("the Current OS is :"+os);
 			if(os.contains("mac"))
 			{
+				System.out.println("Nothing to do here");
 		//		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"/chromedriver");
-			}
-			else if(os.contains("linux"))
-			{
-				
 			}
 			else
 			{
