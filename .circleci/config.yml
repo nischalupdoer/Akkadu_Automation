@@ -1,16 +1,15 @@
 version: 2.1
-
-orbs:
-  maven: circleci/maven@0.0.12
-  
-  
-workflows:
-  maven_test:
-    jobs:
-    test:
+test:
     docker:
       - image: 'cimg/node:13.12'
     steps:
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
+orbs:
+
+  browser-tools: circleci/browser-tools@x.y
+  
+workflows:
+  maven_test:
+    jobs:
       - maven/test # checkout, build, test, and upload test results
