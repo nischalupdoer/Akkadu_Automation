@@ -74,10 +74,12 @@ public class LoginPage extends BasePage {
 	}
 	
 	public void openNewTabToLoginForInterpreter(String userEmail, String userPassword, int tabNo) throws InterruptedException, AWTException{
-		//openNewTab();
-		openNewTab1();
+	//	openNewTab();
+	//	openNewTab1();
 		switchTab(tabNo);
-		gotoURL(TestUtils.getProperty("url"));
+		OpenNewWindow(TestUtils.getProperty("url"));
+		switchToNewWindow();
+	//	gotoURL(TestUtils.getProperty("url"));
 		waitForElementToBecomeVisible(loginBttn, longWait);
 		clickAndWait(loginBttn, longWait);
 		waitForElementToBecomeVisible(userEmailField, longWait);

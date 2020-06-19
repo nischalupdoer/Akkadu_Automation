@@ -8,7 +8,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
@@ -62,16 +64,22 @@ public class OrganizerBroadcastPage extends BasePage{
 		waitForElementToBeClickable(startBttn, longWait);
 		clickAndWait(startBttn, longWait);
 		TestUtils.sleep(3);
-		handleWindowPopup();
-		TestUtils.sleep(7);
+//		handleWindowPopup();
+//		TestUtils.sleep(7);
 		Assert.assertTrue(isElementPresent(muteBttn), "Start button is not clicked or mute button is not appearing after click on start button");
 	}
 	
 	public void handleWindowPopup() throws AWTException {
-	Robot robot = new Robot();
-	robot.delay(5000);
-	robot.keyPress(KeyEvent.VK_TAB);
-	robot.keyPress(KeyEvent.VK_TAB);
-	robot.keyPress(KeyEvent.VK_ENTER);
+//	Robot robot = new Robot();
+//	robot.delay(5000);
+//	robot.keyPress(KeyEvent.VK_TAB);
+//	robot.keyPress(KeyEvent.VK_TAB);
+//	robot.keyPress(KeyEvent.VK_ENTER);
+	Actions action = new Actions(driver.get());
+	action.sendKeys(Keys.TAB).build().perform();
+	action.sendKeys(Keys.TAB).build().perform();
+//	action.sendKeys(Keys.TAB).build().perform();
+	action.sendKeys(Keys.ENTER).build().perform();
+	
 	}
 }

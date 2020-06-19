@@ -12,7 +12,8 @@
 					<include name="verifyToCreateEventTest"/>	
 					<include name="verifyToEditEventTest"/>	
 					<include name="verifyToManageSpeakersOnEvent"/>	
-					<include name="verifyToStreamingOnBroadcast"/>
+					<exclude name="verifyToStreamingOnBroadcast"/>
+					<include name="VerifyToStreamOnBroadcast"/>
 				</methods>
 			</class>
 		</classes>

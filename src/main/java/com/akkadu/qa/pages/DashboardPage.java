@@ -1,11 +1,20 @@
 package com.akkadu.qa.pages;
 
 import java.awt.AWTException;
+import java.awt.HeadlessException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
@@ -119,6 +128,14 @@ public class DashboardPage extends BasePage {
 	/** The Stream button on newly created event*/
 	private By streamBttn = By.xpath("//div[@id='events__list-container']//div[1]//div[2]//div[1]//div[1]//span[contains(text(),'Stream')]");
 	
+	/** The Event Start Time **/
+	private By EventStartTime = By.xpath("(//input[@name=\"eventStartTime\"])[1]");
+	
+	/** The QR Code Button **/
+	private By QRCodeBtn = By.xpath("(//span[contains(text(),'QR Code')])[1]");
+	
+	/** The Audience link button **/
+	private By AudienceLinkBtn = By.xpath("//span[contains(text(),'Audience link')]");
 	
 	
 	
@@ -298,5 +315,24 @@ public class DashboardPage extends BasePage {
 		waitForElementToBecomeVisible(createEventBttn, longWait);
 		Assert.assertTrue(isElementPresent(createEventBttn), "user is not logged in");
 		Log.info("Login Successfull");
+	}
+	public void EditEventStartTime() throws Exception,  IOException
+	{
+		waitForElementToBecomeVisible(EventStartTime, longWait);
+		clickAndWait(EventStartTime, shortWait);
+		System.out.println(CurrentDate());
+		setText(EventStartTime, CurrentDate(), shortWait);
+		waitForElementToBeClickable(saveChangesBttn,longWait);
+		clickAndWait(saveChangesBttn, shortWait);
+		System.out.println("Start time updated successfully");
+		waitForElementToBecomeVisible(QRCodeBtn, longWait);
+		waitForElementToBeClickable(QRCodeBtn, longWait);
+		clickAndWait(QRCodeBtn, longWait);
+		waitForElementToBeClickable(AudienceLinkBtn, longWait);
+		clickAndWait(AudienceLinkBtn, longWait);
+		AudienceLink = (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor); // extracting the text that was copied to the clipboard
+		System.out.println("The New Audience URl is "+AudienceLink);
+		Actions action = new Actions(driver.get());
+		action.sendKeys(Keys.ESCAPE).build().perform();
 	}
 }

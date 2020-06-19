@@ -24,6 +24,10 @@ public class InterpreterDashboardPage extends BasePage{
 	/** The Start button */
 	private By startTurnBttn = By.xpath("//span[contains(text(),'Start turn')]");
 	
+	private By EventStartBtn = By.xpath("//span[@class='block']//span[contains(text(),'Start')]");
+	
+	private By EventStartMessage = By.xpath("(//div[@id='event-media']/div//button/span)[1]");
+	
 	public InterpreterDashboardPage(ThreadLocal<WebDriver> driver) {
 		super(driver);
 		this.driver = driver;
@@ -43,5 +47,16 @@ public class InterpreterDashboardPage extends BasePage{
 		waitForElementToBecomeVisible(startTurnBttn, longWait);
 	}
 
+	public void VerifyEventStreaming()
+	{
+		System.out.println("The Url to be Open : "+AudienceLink);
+		driver.get().get(AudienceLink);
+		waitForElementToBecomeVisible(EventStartBtn, longWait);
+		waitForElementToBeClickable(EventStartBtn, longWait);
+		clickAndWait(EventStartBtn, longWait);
+		TestUtils.sleep(10);
+		String VerifyEvent = getText(EventStartMessage).trim();
+		Assert.assertTrue(VerifyEvent.contains("Language"), "Event not started on Interpreter's end");
+	}
 
 }

@@ -6,22 +6,23 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.checkerframework.checker.nullness.qual.Nullable;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -31,21 +32,15 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.internal.BaseAction;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+import org.testng.*;
 
 import com.akkadu.qa.utils.TestUtils;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -74,6 +69,8 @@ public class BasePage {
 
 	/** The no wait. */
 	protected Wait<WebDriver> noWait;
+	
+	protected static String AudienceLink ;
 
 
 	/** The actions. */
@@ -593,7 +590,7 @@ public class BasePage {
 	}
 	
 	public final void openNewTab() {
-		driver.get().findElement(By.xpath("//html//body")).sendKeys(Keys.CONTROL +"t");
+		driver.get().findElement(By.cssSelector("body")).sendKeys(Keys.COMMAND +"t");
 		Log.info("New tab open successfully");
 		TestUtils.sleep(5);
 		
@@ -601,14 +598,34 @@ public class BasePage {
 	}
 	
 	public void openNewTab1() throws InterruptedException, AWTException {
-	    Robot robot = new Robot();
-	    robot.keyPress(KeyEvent.VK_CONTROL); 
-	    robot.keyPress(KeyEvent.VK_T); 
-	    robot.keyRelease(KeyEvent.VK_CONTROL); 
-	    robot.keyRelease(KeyEvent.VK_T);    
+		System.out.println("Opening new tab");
+		String os = System.getProperty("os.name").toLowerCase();
+		if(os.contains("mac"))
+		{
+			Actions action = new Actions(driver.get());
+			action.sendKeys(Keys.chord(Keys.COMMAND,"t")).build().perform();
+			
+		}
+		else
+		{
+			Robot robot = new Robot();
+		    robot.keyPress(KeyEvent.VK_CONTROL); 
+		    robot.keyPress(KeyEvent.VK_T); 
+		    robot.keyRelease(KeyEvent.VK_CONTROL); 
+		    robot.keyRelease(KeyEvent.VK_T); 
+		}
 		Thread.sleep(4000);
+		System.out.println("new tab opened successfully");
 	}
 	
+	public void OpenNewWindow(String url)
+	{
+		JavascriptExecutor jsExecutor = (JavascriptExecutor)driver.get();
+		  
+		  
+		  String jsOpenNewWindow = "window.open('"+url+"');";
+		  jsExecutor.executeScript(jsOpenNewWindow);
+	}
 
 	/**
 	 * get Number of Tab Open.
@@ -950,6 +967,32 @@ public class BasePage {
 		Thread.sleep(4000);
 	}
 	
-	
+	public String CurrentDate()
+	{
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+
+		 //get current date time with Date()
+		 Date date = new Date();
+
+		 // Now format the date
+		 String date1= dateFormat.format(date);
+		 String[] hr = date1.split(":");
+		 int a = Integer.parseInt(hr[0]);
+		 if(a==12)
+		 {
+			 return date1+"P";
+		 }
+		 else if(a>12)
+		 {
+			 String modifiedDate = Integer.toString(a-12); 
+			 return modifiedDate+hr[1]+"P";
+		 }
+		 else
+		 {
+			 return date1+"A";
+		 }
+	}
+
+
 
 }

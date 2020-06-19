@@ -289,4 +289,45 @@ public class SmokeTest extends BaseTest {
 
 		MyScreenRecorder.stopRecording();
 	}
+	
+	@Test(description = "To verify Streaming and Event display on Interpreter's end")
+	public void VerifyToStreamOnBroadcast() throws Exception
+	{
+		test = extent.startTest("Streaming Test");
+		test.log(LogStatus.INFO,"Entered User email, password and click on Login button");
+
+		MyScreenRecorder.startRecording("verifyToStreamingOnBroadcast");
+
+		pages.getLoginPage().loginToAkkaduApp("eventorganizer@akkadu-team.com", "qatestuser3");
+		
+		test.log(LogStatus.INFO, "Verify Home page afetr login");
+		pages.getDashboardPage().verifyHomePageAfterLogin();
+		
+		test.log(LogStatus.INFO, "Click on edit event button");
+		pages.getDashboardPage().editNewlyCreatedEvent();
+		
+		test.log(LogStatus.INFO, "Edit Event start time");
+		pages.getDashboardPage().EditEventStartTime();
+		
+		test.log(LogStatus.INFO, "Click on stream button to stream the event");
+		pages.getDashboardPage().verifyAndClickOnStreamBttn();
+		
+		test.log(LogStatus.INFO, "Verify and click on start button and verify after click on it");
+		pages.getOrganizerBroadcastPage().verifyAndClickOnStartBttn();
+		
+		test.log(LogStatus.INFO, "Verify and click on listen to speakers button and verify colors of it");
+		pages.getOrganizerBroadcastPage().verifyAndClickOnListenToSpeakersBttn();
+		
+		test.log(LogStatus.INFO, "Click on mute button and verify after click on it");
+		pages.getOrganizerBroadcastPage().verifyAndClickOnMuteBttn();
+		
+		test.log(LogStatus.INFO, "Open new tab to login as a interpreter");
+		pages.getLoginPage().openNewTabToLoginForInterpreter("interpreter1@akkadu-team.com", "qatestuser1", 1);
+		
+		test.log(LogStatus.INFO, "Verify welcome note after logged in as a interpreter");
+	    pages.getInterpreterDashboardPage().verifyWelcomeNoteAfterLoggedInAsInterpreter();
+	    
+	    test.log(LogStatus.INFO, "Verify Event showing in interpreter's end");
+	    pages.getInterpreterDashboardPage().VerifyEventStreaming();
+	}
 }

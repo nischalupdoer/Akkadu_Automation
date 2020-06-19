@@ -2,6 +2,7 @@ package com.akkadu.qa.uitests;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.commons.io.FileUtils;
@@ -80,16 +81,19 @@ public class BaseTest
 			prefs.put("download.default_directory", downloadFolder);
 			ChromeOptions options = new ChromeOptions();
 			options.setExperimentalOption("prefs", prefs);
-
+			options.addArguments(Arrays.asList("disable-infobars", "ignore-certificate-errors", "start-maximized","use-fake-ui-for-media-stream"));
 			String os = System.getProperty("os.name").toLowerCase();
 			System.out.println("the Current OS is :"+os);
 			if(os.contains("mac"))
 			{
+				System.out.println("Nothing to do here");
 		//		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"/chromedriver");
 			}
 			else if(os.contains("linux"))
 			{
-				System.out.println("Nothing to do here");
+				String CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver";
+				System.setProperty("webdriver.chrome.driver", CHROMEDRIVER_PATH);
+				
 			}
 			else
 			{
