@@ -97,7 +97,7 @@ public class BaseTest
 			}
 			else if(os.contains("linux"))
 			{
-				System.setProperty("webdriver.chrome.driver","/configuration/resources/temp/webdriver/chromedriver");
+				System.setProperty("webdriver.chrome.driver","/project/resources/chromedriver");
 			//	System.setProperty("webdriver.chrome.driver","/usr/local/bin/chromedriver");
 			}	
 			else
