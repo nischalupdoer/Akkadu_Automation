@@ -2,9 +2,11 @@ version: 2.1
 
 orbs:
   maven: circleci/maven@0.0.12
-build:
-    working_directory: ~/project
-requires:	
+  browser-tools: circleci/browser-tools@x.y
+steps:
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+docker:	
 - image: selenium/standalone-chrome:3.1.0  
 workflows:
 
