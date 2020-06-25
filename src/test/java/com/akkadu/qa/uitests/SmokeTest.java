@@ -329,5 +329,7 @@ public class SmokeTest extends BaseTest {
 	    
 	    test.log(LogStatus.INFO, "Verify Event showing in interpreter's end");
 	    pages.getInterpreterDashboardPage().VerifyEventStreaming();
+	    
+	    MyScreenRecorder.stopRecording();
 	}
 }

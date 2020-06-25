@@ -13,6 +13,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
@@ -75,6 +76,7 @@ public class BaseTest
 			// set browser preferences to ignore browser notification pop up and to add
 			// console errors
 			
+		//	WebDriverManager.firefoxdriver().setup();
 			WebDriverManager.chromedriver().setup();
 			Map<String, Object> prefs = new HashMap<>();
 			prefs.put("profile.default_content_setting_values.notifications", 2);
@@ -129,6 +131,7 @@ public class BaseTest
 			break;
 
 		 default:
+			 
 			Log.info("browser not supported");
 			break;
 		}
