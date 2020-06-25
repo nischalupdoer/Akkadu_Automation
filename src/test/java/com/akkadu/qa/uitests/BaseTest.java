@@ -82,7 +82,9 @@ public class BaseTest
 			ChromeOptions options = new ChromeOptions();
 			options.setExperimentalOption("prefs", prefs);
 			options.addArguments("start-maximized"); 
-			options.addArguments("enable-automation"); 
+			options.addArguments("enable-automation");
+			//For Headless
+			Options.setHeadless(true);
 			options.addArguments("--no-sandbox"); 
 			options.addArguments("--disable-infobars");
 			options.addArguments("--disable-dev-shm-usage");
@@ -97,7 +99,7 @@ public class BaseTest
 			}
 			else if(os.contains("linux"))
 			{
-				System.setProperty("webdriver.chrome.driver","/resources/chromedriver");
+			//	System.setProperty("webdriver.chrome.driver","/resources/chromedriver");
 			//	System.setProperty("webdriver.chrome.driver","/usr/local/bin/chromedriver");
 			}	
 			else
