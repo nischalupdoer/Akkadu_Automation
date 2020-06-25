@@ -1,8 +1,7 @@
 version: 2.1
 orbs:
   maven: circleci/maven@0.0.12
-  browser-tools: circleci/browser-tools@x.y
-
+  
 jobs:
   build:
     working_directory: ~/project
