@@ -17,7 +17,7 @@ jobs:
       - attach_workspace:
           at: ~/project
       - persist_to_workspace:
-          root: /usr/local/bin
+          root: /usr/lib/chromium-browser/chromedriver
           paths:
             - chromedriver
       
