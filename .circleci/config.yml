@@ -4,11 +4,9 @@ orbs:
   maven: circleci/maven@0.0.12
 build:
     working_directory: ~/project
-    type: shell
-    command: |
-  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
-  
+requires:
+	- test_windows
+	- image: selenium/standalone-chrome:3.1.0  
 workflows:
 
   maven_test:
