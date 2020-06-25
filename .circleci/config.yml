@@ -16,10 +16,10 @@ jobs:
       - run: echo "Selenium chromedriver installed"
       - attach_workspace:
           at: ~/project
-      - persist_to_workspace:
-          root: /usr/lib/chromium-browser/chromedriver
-          paths:
-            - chromedriver
+#       - persist_to_workspace:
+#           root: /usr/lib/chromium-browser/chromedriver
+#           paths:
+#             - chromedriver
       
 
 workflows:
