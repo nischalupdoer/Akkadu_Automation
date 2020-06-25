@@ -1,16 +1,17 @@
 version: 2.1
 orbs:
   maven: circleci/maven@0.0.12
-
-
+  browser-tools: circleci/browser-tools@x.y
 
 jobs:
-
   build:
     working_directory: ~/project
     docker:
+      - image: 'cimg/node:13.12'
       - image: selenium/standalone-chrome:3.1.0 
     steps:
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
       - run: echo "Selenium chromedriver installed"
       - attach_workspace:
           at: ~/project
