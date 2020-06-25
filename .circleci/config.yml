@@ -3,14 +3,15 @@ version: 2.1
 orbs:
   maven: circleci/maven@0.0.12
   browser-tools: circleci/browser-tools@x.y
-steps:
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
-docker:	
-- image: selenium/standalone-chrome:3.1.0  
+ 
 workflows:
-
   maven_test:
     jobs:
-      - build
+    test:
+    docker:
+      - image: 'cimg/node:13.12'
+      - image: selenium/standalone-chrome:3.1.0
+    steps:
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
       - maven/test # checkout, build, test, and upload test results
