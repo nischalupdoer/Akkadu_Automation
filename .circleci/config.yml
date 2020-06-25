@@ -4,9 +4,8 @@ orbs:
   maven: circleci/maven@0.0.12
 build:
     working_directory: ~/project
-requires:
-	- test_windows
-	- image: selenium/standalone-chrome:3.1.0  
+requires:	
+- image: selenium/standalone-chrome:3.1.0  
 workflows:
 
   maven_test:
