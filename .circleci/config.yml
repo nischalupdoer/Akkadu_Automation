@@ -9,8 +9,10 @@ jobs:
       - image: 'cimg/node:13.12'
       - image: selenium/standalone-chrome:3.1.0 
     steps:
-      - run: RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-      - run: RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
+#       - run: RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#       - run: RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
+      - wget https://chromedriver.storage.googleapis.com/2.20/chromedriver_linux64.zip
+      - unzip chromedriver_linux64.zip
       - run: echo "Selenium chromedriver installed"
       - attach_workspace:
           at: ~/project
