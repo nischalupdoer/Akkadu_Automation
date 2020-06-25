@@ -84,7 +84,7 @@ public class BaseTest
 			options.addArguments("start-maximized"); 
 			options.addArguments("enable-automation");
 			//For Headless
-			options.setHeadless(true);
+//			options.setHeadless(true);
 			options.addArguments("--no-sandbox"); 
 			options.addArguments("--disable-infobars");
 			options.addArguments("--disable-dev-shm-usage");
