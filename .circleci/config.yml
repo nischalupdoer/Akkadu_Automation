@@ -2,12 +2,16 @@ version: 2.1
 
 orbs:
   maven: circleci/maven@0.0.12
-  
-workflows:
-type: shell
-command: |
+build:
+    working_directory: ~/project
+    type: shell
+    command: |
   wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
+  
+workflows:
+
   maven_test:
     jobs:
+      - build
       - maven/test # checkout, build, test, and upload test results
