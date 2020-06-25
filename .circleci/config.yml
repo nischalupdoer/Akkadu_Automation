@@ -9,7 +9,7 @@ jobs:
       - image: 'cimg/node:13.12'
       - image: selenium/standalone-chrome:3.1.0 
     steps:
-      - apt install chromium-chromedriver
+      
       - run: echo "Selenium chromedriver installed"
       - attach_workspace:
           at: ~/project
