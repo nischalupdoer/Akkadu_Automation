@@ -1,9 +1,35 @@
 version: 2.1
-
 orbs:
   maven: circleci/maven@0.0.12
   
+jobs:
+  build:
+    working_directory: ~/project
+    docker:
+      - image: 'cimg/node:13.12'
+      - image: selenium/standalone-chrome:3.1.0 
+    steps:
+#       - run: RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#       - run: RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
+      - run: wget -N https://chromedriver.storage.googleapis.com/2.20/chromedriver_linux64.zip -P ~/Downloads
+      - run: unzip ~/Downloads/chromedriver_linux64.zip -d ~/Downloads
+#       - run: sudo mv -f ~/Downloads/chromedriver /usr/local/share/
+#       - run: sudo chmod +x /usr/local/share/chromedriver
+      - run: echo "Selenium chromedriver installed"
+      - attach_workspace:
+          at: ~/project
+#       - persist_to_workspace:
+#           root: /usr/lib/chromium-browser/chromedriver
+#           paths:
+#             - chromedriver
+      
+
 workflows:
   maven_test:
     jobs:
-      - maven/test # checkout, build, test, and upload test results
+      - build
+      - maven/test: # checkout, build, test, and upload test results
+          test_results_path: test-reports
+          requires:
+            - build
+      
