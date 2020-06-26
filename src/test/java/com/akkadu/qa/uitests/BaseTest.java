@@ -99,7 +99,7 @@ public class BaseTest
 			}
 			else if(os.contains("linux"))
 			{
-				 System.setProperty("webdriver.chrome.driver","/usr/local/share/chromedriver");
+				System.setProperty("webdriver.chrome.driver","/usr/local/share/chromedriver");
 			//	System.setProperty("webdriver.chrome.driver","/usr/local/bin/chromedriver");
 			}	
 			else
