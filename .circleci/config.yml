@@ -14,7 +14,7 @@ jobs:
       - run: wget -N https://chromedriver.storage.googleapis.com/2.20/chromedriver_linux64.zip -P ~/Downloads
       - run: unzip ~/Downloads/chromedriver_linux64.zip -d ~/Downloads
 #       - run: sudo mv -f ~/Downloads/chromedriver /usr/local/share/
-#       - run: sudo chmod +x /usr/local/share/chromedriver
+       - run: sudo chmod +x ~/Downloads/chromedriver
       - run: echo "Selenium chromedriver installed"
       - attach_workspace:
           at: ~/project
