@@ -84,7 +84,7 @@ public class BaseTest
 			options.addArguments("start-maximized"); 
 			options.addArguments("enable-automation");
 			//For Headless
-			options.setHeadless(true);
+//			options.setHeadless(true);
 			options.addArguments("--no-sandbox"); 
 			options.addArguments("--disable-infobars");
 			options.addArguments("--disable-dev-shm-usage");
@@ -99,7 +99,7 @@ public class BaseTest
 			}
 			else if(os.contains("linux"))
 			{
-			//	System.setProperty("webdriver.chrome.driver","/resources/chromedriver");
+				System.setProperty("webdriver.chrome.driver","/home/circleci/Downloads/chromedriver");
 			//	System.setProperty("webdriver.chrome.driver","/usr/local/bin/chromedriver");
 			}	
 			else
