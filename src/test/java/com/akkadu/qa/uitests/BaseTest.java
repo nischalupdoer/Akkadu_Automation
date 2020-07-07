@@ -86,6 +86,10 @@ public class BaseTest
 			prefs.put("download.default_directory", downloadFolder);
 			ChromeOptions options = new ChromeOptions();
 			options.setExperimentalOption("prefs", prefs);
+			options.addArguments("--headless");
+            options.addArguments("--whitelisted-ips");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-extensions");
 			options.addArguments(Arrays.asList("disable-infobars", "ignore-certificate-errors", "start-maximized","use-fake-ui-for-media-stream"));
 			String os = System.getProperty("os.name").toLowerCase();
 			System.out.println("the Current OS is :"+os);
