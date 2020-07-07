@@ -96,8 +96,8 @@ public class BaseTest
 			}
 			else if(os.contains("linux"))
 			{
-				String CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver";
-				System.setProperty("webdriver.chrome.driver", CHROMEDRIVER_PATH);
+//				String CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver";
+//				System.setProperty("webdriver.chrome.driver", CHROMEDRIVER_PATH);
 				
 			}
 			else
