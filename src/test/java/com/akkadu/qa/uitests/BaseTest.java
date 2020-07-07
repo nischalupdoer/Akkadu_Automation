@@ -2,6 +2,7 @@ package com.akkadu.qa.uitests;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -87,6 +88,7 @@ public class BaseTest
 			ChromeOptions options = new ChromeOptions();
 			options.setExperimentalOption("prefs", prefs);
 			options.addArguments("--headless");
+			options.addArguments("--disable-gpu");
             options.addArguments("--whitelisted-ips");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-extensions");
