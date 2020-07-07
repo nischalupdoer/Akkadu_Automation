@@ -87,7 +87,7 @@ public class BaseTest
 			prefs.put("download.default_directory", downloadFolder);
 			ChromeOptions options = new ChromeOptions();
 			options.setExperimentalOption("prefs", prefs);
-	//		options.addArguments("--headless");
+			options.addArguments("--headless");
 			options.addArguments("--disable-gpu");
             options.addArguments("--whitelisted-ips");
             options.addArguments("--no-sandbox");
