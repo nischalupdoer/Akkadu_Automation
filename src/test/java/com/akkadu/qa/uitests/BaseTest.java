@@ -2,6 +2,8 @@ package com.akkadu.qa.uitests;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +27,7 @@ import com.akkadu.qa.actions.ApiActions;
 import com.akkadu.qa.actions.BaseActions;
 import com.akkadu.qa.actions.UIActions;
 import com.akkadu.qa.base.MyScreenRecorder;
+import com.akkadu.qa.base.SendMailUsingAPI;
 import com.akkadu.qa.pages.PageCollection;
 import com.akkadu.qa.utils.TestUtils;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -157,8 +160,14 @@ public class BaseTest
 
 		@BeforeSuite
 		public void before() {
-			extent = new ExtentReports("target/surefire-reports/ExtentReport.html", true);
+			if(extent==null)
+			{
+				String workingDir = System.getProperty("user.dir");
+				DateFormat df = new SimpleDateFormat("dd-MM-yyyy-HH_mm");
+				DateFormat df1 = new SimpleDateFormat("dd-MM-yyyy");
+				extent = new ExtentReports(workingDir+"//target/surefire-reports/ExtentReport.html", true);
 		}
+		}	
 
 
 		@AfterMethod(alwaysRun = true)
@@ -197,9 +206,16 @@ public class BaseTest
 			//driver.quit();
 			extent.flush();
 			extent.close();
+			try {
+			SendMailUsingAPI smua = new SendMailUsingAPI();
+			smua.JavaMail();
+			}catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 		}
 		
-		public void captureScreenshot(ITestResult result) throws IOException, InterruptedException {
+		public void captureScreenshot(ITestResult result) throws InterruptedException {
 			try {
 				String screenshotName = TestUtils.getFileName(result.getName());
 				File screenshot = ((TakesScreenshot) driver.get()).getScreenshotAs(OutputType.FILE);

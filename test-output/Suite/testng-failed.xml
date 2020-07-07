@@ -5,16 +5,11 @@
     <classes>
       <class name="com.akkadu.qa.uitests.SmokeTest">
         <methods>
-          <include name="verifyToEditEventTest"/>
           <include name="loginToAkkaduAppTest"/>
           <include name="driversetup"/>
           <include name="tearDownSuite"/>
           <include name="afterMainMethod"/>
-          <include name="VerifyToStreamOnBroadcast"/>
           <include name="before"/>
-          <include name="verifyToCreateEventTest"/>
-          <include name="signUpToAkkaduAppTest"/>
-          <include name="verifyToManageSpeakersOnEvent"/>
           <include name="initializePages"/>
         </methods>
       </class> <!-- com.akkadu.qa.uitests.SmokeTest -->

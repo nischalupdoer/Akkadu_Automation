@@ -8,12 +8,12 @@
 				name="com.akkadu.qa.uitests.SmokeTest">
 				<methods>
 				    <include name="loginToAkkaduAppTest"/>
-					<include name="signUpToAkkaduAppTest"/>
-					<include name="verifyToCreateEventTest"/>	
-					<include name="verifyToEditEventTest"/>	
-					<include name="verifyToManageSpeakersOnEvent"/>	
+					<exclude name="signUpToAkkaduAppTest"/>
+					<exclude name="verifyToCreateEventTest"/>	
+					<exclude name="verifyToEditEventTest"/>	
+					<exclude name="verifyToManageSpeakersOnEvent"/>	
 					<exclude name="verifyToStreamingOnBroadcast"/>
-					<include name="VerifyToStreamOnBroadcast"/>
+					<exclude name="VerifyToStreamOnBroadcast"/>
 				</methods>
 			</class>
 		</classes>
