@@ -87,7 +87,7 @@ public class BaseTest
 			prefs.put("download.default_directory", downloadFolder);
 			ChromeOptions options = new ChromeOptions();
 			options.setExperimentalOption("prefs", prefs);
-			options.addArguments("--headless");
+	//		options.addArguments("--headless");
 			options.addArguments("--disable-gpu");
             options.addArguments("--whitelisted-ips");
             options.addArguments("--no-sandbox");
@@ -212,13 +212,13 @@ public class BaseTest
 			//driver.quit();
 			extent.flush();
 			extent.close();
-			try {
-			SendMailUsingAPI smua = new SendMailUsingAPI();
-			smua.JavaMail();
-			}catch(Exception e)
-			{
-				e.printStackTrace();
-			}
+//			try {
+//			SendMailUsingAPI smua = new SendMailUsingAPI();
+//			smua.JavaMail();
+//			}catch(Exception e)
+//			{
+//				e.printStackTrace();
+//			}
 		}
 		
 		public void captureScreenshot(ITestResult result) throws InterruptedException {
