@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -31,6 +32,12 @@ public class DashboardPage extends BasePage {
 	
 	/** The event name field */
 	private By eventNameField = By.xpath("//div[@class='control is-clearfix']//input[@class='input']");
+	
+	/** The Industry field   **/
+	private By IndustryType = By.xpath("//label[text()='Industry']/parent::div//div[@class='multiselect__tags']");
+	
+	/** The Input Industry type field   **/
+	private By InputIndustryType = By.xpath("//div[@class='multiselect__tags']//input");
 	
 	/** The time done button */
 	private By doneBttn = By.xpath("//span[contains(text(),'Done!')]");
@@ -81,7 +88,7 @@ public class DashboardPage extends BasePage {
 	private By addPresentationsBttn = By.xpath("//span[contains(text(),'Add Presentations')]");
 	
 	/** The add presentation (file) icon*/
-	private By addFileIcon = By.xpath("//span[@class='icon']");
+	private By addFileIcon = By.xpath("//div[@class='file-upload-box']//input[@type='file']");
 	
 	/** The save button to combine and save the added presentation file*/
 	private By saveButton = By.xpath("//button[@class='button save-pdf-state-button is-light']//span[contains(text(),'Save')]");
@@ -96,7 +103,7 @@ public class DashboardPage extends BasePage {
 	private By eventIntroTxtArea = By.xpath("//section[@class='dashboard-edit edit-card-wrapper']//section//div//textarea[@placeholder='Event Introduction']");
 	
 	/** The choose file button*/
-	private By chooseFileBttn = By.xpath("//section//input[@name='poster']");
+	private By chooseFileBttn = By.xpath("(//input[@name='poster'])[1]");
 	
 	/** The choose file button*/
 	private By saveChangesBttn = By.xpath("//section[@class='dashboard-edit edit-card-wrapper']//section//span[contains(text(),'Save Changes')]");
@@ -193,10 +200,12 @@ public class DashboardPage extends BasePage {
 	
 	public void verifyToAddPoster(String fileName) throws InterruptedException, AWTException {
 		waitForElementToBecomeVisible(chooseFileBttn, longWait);
-		javascriptButtonClick(chooseFileBttn);
-		TestUtils.sleep(4);
-		addImageMethod(fileName);
-		TestUtils.sleep(7);
+		uploadFile(chooseFileBttn, fileName);
+		
+//		javascriptButtonClick(chooseFileBttn);
+//		TestUtils.sleep(4);
+//		addImageMethod(fileName);
+//		TestUtils.sleep(7);
 		}
 	
 	public void clickOnSaveChangesButton() {
@@ -223,12 +232,13 @@ public class DashboardPage extends BasePage {
 	
 	public void verifyToAddPresentationAndClickOnSaveButton(String fileName) throws InterruptedException, AWTException {
 		waitForElementToBecomeVisible(addFileIcon, longWait);
-		javascriptButtonClick(addFileIcon);
-		TestUtils.sleep(4);
-		addImageMethod(fileName);
+		uploadaFile(addFileIcon, fileName);
+//		javascriptButtonClick(addFileIcon);
+//		TestUtils.sleep(4);
+//		addImageMethod(fileName);
 		waitForElementToBecomeVisible(saveButton, shortWait);
 		clickAndWait(saveButton, shortWait);
-		TestUtils.sleep(7);
+//		TestUtils.sleep(7);
 		}
 	
 	public void clickOnAddPresentationsButton() {
@@ -298,6 +308,13 @@ public class DashboardPage extends BasePage {
 		String eventName= "event"+randomid();
 		setText(eventNameField, eventName, shortWait);
 		setText(bioTextArea, eventName+"is going to start", shortWait);
+		waitForElementToBeClickable(IndustryType, shortWait);
+		clickAndWait(IndustryType, longWait);
+		WebElement el = driver.get().findElement(InputIndustryType);
+		el.sendKeys("IT");
+		Thread.sleep(2000);
+		pressEnter();
+		
 		return eventName;
 	}
 	

@@ -950,8 +950,17 @@ public class BasePage {
 		return driver.get().findElement(elementLocation).getLocation();
 	}
 	
+	public void uploadaFile(By locator, String Filename)
+	{
+		WebElement File = driver.get().findElement(locator);
+		String filename = System.getProperty("user.dir")+"/resources/uploadFile/"+Filename;
+		System.out.println(filename);
+		File.sendKeys(filename);
+	}
+	
 	public void addImageMethod(String fileName) throws InterruptedException, AWTException {
-		StringSelection ss = new StringSelection("D:\\Marchhh\\March\\appToTest\\AkkaduAppSmokeAutomation\\resources\\uploadFile\\"+fileName);
+		StringSelection ss = new StringSelection(System.getProperty("user.dir")+"/resources/uploadFile/"+fileName);
+		System.out.println("The String selection is : "+ss);
 	    Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 
 	    //imitate mouse events like ENTER, CTRL+C, CTRL+V

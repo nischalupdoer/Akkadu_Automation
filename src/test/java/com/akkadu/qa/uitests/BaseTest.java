@@ -102,8 +102,8 @@ public class BaseTest
 			}
 			else if(os.contains("linux"))
 			{
-//				String CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver";
-//				System.setProperty("webdriver.chrome.driver", CHROMEDRIVER_PATH);
+				String CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver";
+				System.setProperty("webdriver.chrome.driver", CHROMEDRIVER_PATH);
 				
 			}
 			else
@@ -212,13 +212,13 @@ public class BaseTest
 			//driver.quit();
 			extent.flush();
 			extent.close();
-//			try {
-//			SendMailUsingAPI smua = new SendMailUsingAPI();
-//			smua.JavaMail();
-//			}catch(Exception e)
-//			{
-//				e.printStackTrace();
-//			}
+			try {
+			SendMailUsingAPI smua = new SendMailUsingAPI();
+			smua.JavaMail();
+			}catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 		}
 		
 		public void captureScreenshot(ITestResult result) throws InterruptedException {
