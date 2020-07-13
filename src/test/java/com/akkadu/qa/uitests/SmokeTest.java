@@ -319,7 +319,7 @@ public class SmokeTest extends BaseTest {
 		pages.getOrganizerBroadcastPage().verifyAndClickOnListenToSpeakersBttn();
 		
 		test.log(LogStatus.INFO, "Click on mute button and verify after click on it");
-		pages.getOrganizerBroadcastPage().verifyAndClickOnMuteBttn();
+//		pages.getOrganizerBroadcastPage().verifyAndClickOnMuteBttn();
 		
 		test.log(LogStatus.INFO, "Open new tab to login as a interpreter");
 		pages.getLoginPage().openNewTabToLoginForInterpreter("interpreter1@akkadu-team.com", "qatestuser1", 1);
