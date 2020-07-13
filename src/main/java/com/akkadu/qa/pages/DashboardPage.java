@@ -200,7 +200,7 @@ public class DashboardPage extends BasePage {
 	
 	public void verifyToAddPoster(String fileName) throws InterruptedException, AWTException {
 		waitForElementToBecomeVisible(chooseFileBttn, longWait);
-		uploadFile(chooseFileBttn, fileName);
+		uploadaFile(chooseFileBttn, fileName);
 		
 //		javascriptButtonClick(chooseFileBttn);
 //		TestUtils.sleep(4);
